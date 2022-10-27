@@ -7,6 +7,7 @@ This is a proof of concept developed to see if pure web components could be gene
 This is very much a WIP. Road map items include:
 - make responsive 
 - unit tests
+- more web components
 
 
 Working Version: [http://map-annotation.s3-website-us-east-1.amazonaws.com/](http://map-annotation.s3-website-us-east-1.amazonaws.com/)

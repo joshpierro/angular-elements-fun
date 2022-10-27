@@ -1,0 +1,17 @@
+.annotation-data-panel{
+    width:24%;
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    z-index: 999;
+}
+
+.button-row {
+    width: 20%;
+    float: right;
+    margin-top: 15px;
+}
+
+.annotations-container{
+    border: 1px solid #e0e0e0;
+}

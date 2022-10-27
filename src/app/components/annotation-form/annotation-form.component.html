@@ -1,0 +1,42 @@
+<div class="annotation-data-panel">
+    <mat-accordion>
+        <mat-expansion-panel  [expanded]="showFeatureAttributes" (opened)="showFeatureAttributes=true" (closed)="showFeatureAttributes=false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Annotation Details
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <form [formGroup]="annotationForm" (ngSubmit)="onSubmit()">
+            <mat-form-field>
+              <label for="name">Notes:</label>
+              <input id="name" matInput type="text" formControlName="notes" required>
+            </mat-form-field>
+            <div>Geometry: {{annotationMapFeature.geometry | json}}</div>
+            <div class="button-row">
+              <button mat-icon-button color="primary" type="submit" [disabled]="!annotationForm.controls.notes.valid"> 
+                <mat-icon>save</mat-icon>
+              </button>
+            </div>
+          </form>
+        </mat-expansion-panel>
+        <mat-expansion-panel [expanded]="showAnnotationList" (opened)="showAnnotationList=true" (closed)="showAnnotationList=false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Annotations List
+            </mat-panel-title> 
+
+          </mat-expansion-panel-header>
+          <p *ngIf="annotations$ | async as annotations">
+            <mat-list role="list" *ngFor="let annotation of annotations" class="annotations-container">
+              <mat-list-item role="listitem" (click)="handleFeatureSelectionInList(annotation.id || 0)">
+                {{
+                (annotation.notes && annotation.notes.length > 25) ? (annotation.notes | slice:0:25)+'...'
+                :(annotation.notes)
+              }}
+            </mat-list-item>
+            </mat-list>
+          </p>
+        </mat-expansion-panel>
+      </mat-accordion>
+</div>
+
